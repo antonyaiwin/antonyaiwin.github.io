@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_personal_portfolio/core/constants/color_constants.dart';
 import 'package:flutter_personal_portfolio/core/constants/image_constants.dart';
 

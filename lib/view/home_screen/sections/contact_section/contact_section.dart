@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_personal_portfolio/core/constants/color_constants.dart';
 
+import '../../../../global_widgets/elevated_container.dart';
 import '../../../../global_widgets/subtitle.dart';
 
 class ContactSection extends StatelessWidget {
@@ -14,12 +15,7 @@ class ContactSection extends StatelessWidget {
         children: [
           const Subtitle(text: 'Get In Touch'),
           const SizedBox(height: 10),
-          Container(
-            padding: const EdgeInsets.all(20.0),
-            decoration: BoxDecoration(
-              color: ColorConstants.lightNavy,
-              borderRadius: BorderRadius.circular(10),
-            ),
+          ElevatedContainer(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,

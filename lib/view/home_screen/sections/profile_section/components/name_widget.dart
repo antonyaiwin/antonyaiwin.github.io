@@ -39,6 +39,7 @@ class NameWidget extends StatelessWidget {
             fontSize: 25,
             color: Colors.white70,
           ),
+          textAlign: TextAlign.center,
         ),
         Text(
           'Crafting beautiful, high-performance cross-platform mobile applications with Flutter.',
