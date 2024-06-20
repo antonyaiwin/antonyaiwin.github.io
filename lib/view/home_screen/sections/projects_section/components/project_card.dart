@@ -30,32 +30,41 @@ class ProjectCard extends StatelessWidget {
                 );
               },
               options: CarouselOptions(
-                aspectRatio: 10 / 7,
+                aspectRatio: 10 / 8,
                 enlargeCenterPage: false,
                 viewportFraction: 1,
                 autoPlay: true,
               ),
             ),
           ),
-          Text(
-            item.title,
-            style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  color: ColorConstants.primaryWhite,
-                ),
+          const SizedBox(height: 10),
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              item.title,
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    color: ColorConstants.primaryWhite,
+                  ),
+              maxLines: 2,
+            ),
           ),
           const SizedBox(height: 5),
           Expanded(
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
               child: Wrap(
-            spacing: 5,
-            runSpacing: 5,
-            children: item.skills
-                .map(
-                  (e) => ProjectSkillsWidget(
-                    text: e,
-                  ),
-                )
-                .toList(),
-          ))
+                spacing: 5,
+                runSpacing: 5,
+                children: item.skills
+                    .map(
+                      (e) => ProjectSkillsWidget(
+                        text: e,
+                      ),
+                    )
+                    .toList(),
+              ),
+            ),
+          ),
         ],
       ),
     );

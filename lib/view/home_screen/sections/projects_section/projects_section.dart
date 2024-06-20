@@ -16,6 +16,7 @@ class ProjectsSection extends StatelessWidget {
         const Subtitle(text: 'Projects'),
         const SizedBox(height: 20),
         GridView.builder(
+          padding: EdgeInsets.zero,
           gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 500,
             mainAxisSpacing: 10,

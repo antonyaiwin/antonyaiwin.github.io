@@ -3,34 +3,35 @@ import 'package:flutter_personal_portfolio/model/carousel_model.dart';
 import 'package:flutter_personal_portfolio/model/project_model.dart';
 
 List<ProjectModel> projectList = [
+  // #1 project
   ProjectModel(
     title: 'Grocery Store (E-Commerce)',
     subtitle: 'subtitle',
     summary: 'summary',
     images: [
       CarouselModel(
-        title: 'User Application',
-        subtitle: 'Home Page',
+        title: 'Home Page',
+        subtitle: 'User Application',
         image: ImageConstants.groceryStoreHome,
       ),
       CarouselModel(
-        title: 'User Application',
-        subtitle: 'Categories Page',
+        title: 'Categories Page',
+        subtitle: 'User Application',
         image: ImageConstants.groceryStoreCategories,
       ),
       CarouselModel(
-        title: 'User Application',
-        subtitle: 'Favourites Page',
+        title: 'Favourites Page',
+        subtitle: 'User Application',
         image: ImageConstants.groceryStoreFavourites,
       ),
       CarouselModel(
-        title: 'User Application',
-        subtitle: 'Cart Page',
+        title: 'Cart Page',
+        subtitle: 'User Application',
         image: ImageConstants.groceryStoreCart,
       ),
       CarouselModel(
-        title: 'User Application',
-        subtitle: 'Checkout Page',
+        title: 'Checkout Page',
+        subtitle: 'User Application',
         image: ImageConstants.groceryStoreCheckout,
       ),
     ],
@@ -42,82 +43,110 @@ List<ProjectModel> projectList = [
       'Google Maps',
     ],
   ),
+
+  // #2 project
   ProjectModel(
-    title: 'Grocery Store (E-Commerce)',
+    title: 'News App using REST API',
     subtitle: 'subtitle',
     summary: 'summary',
     images: [
       CarouselModel(
-        title: 'User Application',
-        subtitle: 'Home Page',
-        image: ImageConstants.groceryStoreHome,
+        title: 'Home Page',
+        subtitle: '',
+        image: ImageConstants.newsAppHome,
       ),
       CarouselModel(
-        title: 'User Application',
-        subtitle: 'Home Page',
-        image: ImageConstants.groceryStoreCategories,
+        title: 'Filter by Category',
+        subtitle: '',
+        image: ImageConstants.newsAppCategory,
       ),
       CarouselModel(
-        title: 'User Application',
-        subtitle: 'Home Page',
-        image: ImageConstants.groceryStoreFavourites,
+        title: 'Article Details',
+        subtitle: '',
+        image: ImageConstants.newsAppDetails,
       ),
       CarouselModel(
-        title: 'User Application',
-        subtitle: 'Home Page',
-        image: ImageConstants.groceryStoreCart,
+        title: 'Search For News',
+        subtitle: '',
+        image: ImageConstants.newsAppSearch,
       ),
       CarouselModel(
-        title: 'User Application',
-        subtitle: 'Home Page',
-        image: ImageConstants.groceryStoreCheckout,
+        title: 'Drawer',
+        subtitle: '',
+        image: ImageConstants.newsAppDrawer,
+      ),
+      CarouselModel(
+        title: 'Saved Articles',
+        subtitle: '',
+        image: ImageConstants.newsAppSaved,
       ),
     ],
     skills: [
       'Flutter',
       'Dart',
-      'Firebase Auth',
-      'FireStore',
-      'Google Maps',
+      'REST API',
+      'Provider',
+      'Hive',
     ],
   ),
+
+  // #3 project
   ProjectModel(
-    title: 'Grocery Store (E-Commerce)',
+    title: 'Zomato UI Clone',
     subtitle: 'subtitle',
     summary: 'summary',
     images: [
       CarouselModel(
-        title: 'User Application',
-        subtitle: 'Home Page',
-        image: ImageConstants.groceryStoreHome,
+        title: 'Login Page',
+        subtitle: '',
+        image: ImageConstants.zomatoLogin,
       ),
       CarouselModel(
-        title: 'User Application',
-        subtitle: 'Home Page',
-        image: ImageConstants.groceryStoreCategories,
+        title: 'Delivery Page',
+        subtitle: '',
+        image: ImageConstants.zomatoDeliveryPage,
       ),
       CarouselModel(
-        title: 'User Application',
-        subtitle: 'Home Page',
-        image: ImageConstants.groceryStoreFavourites,
+        title: 'Dining Page',
+        subtitle: '',
+        image: ImageConstants.zomatoDiningPage,
       ),
       CarouselModel(
-        title: 'User Application',
-        subtitle: 'Home Page',
-        image: ImageConstants.groceryStoreCart,
+        title: 'Dishes Page',
+        subtitle: '',
+        image: ImageConstants.zomatoDishesPage,
       ),
       CarouselModel(
-        title: 'User Application',
-        subtitle: 'Home Page',
-        image: ImageConstants.groceryStoreCheckout,
+        title: 'Dish Item',
+        subtitle: '',
+        image: ImageConstants.zomatoDishDetails,
+      ),
+      CarouselModel(
+        title: 'Filter Dishes',
+        subtitle: '',
+        image: ImageConstants.zomatoFilterDishes,
+      ),
+      CarouselModel(
+        title: 'Dish Menu',
+        subtitle: '',
+        image: ImageConstants.zomatoMenu,
+      ),
+      CarouselModel(
+        title: 'Restaurant Details',
+        subtitle: '',
+        image: ImageConstants.zomatoRestaurantPage,
+      ),
+      CarouselModel(
+        title: 'Profile Page',
+        subtitle: '',
+        image: ImageConstants.zomatoProfile,
       ),
     ],
     skills: [
       'Flutter',
       'Dart',
-      'Firebase Auth',
-      'FireStore',
-      'Google Maps',
+      'Shared Preferences',
+      'Google Fonts',
     ],
   ),
 ];

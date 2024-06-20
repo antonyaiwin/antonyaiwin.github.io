@@ -58,6 +58,7 @@ class WorkCard extends StatelessWidget {
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       color: ColorConstants.white54,
                     ),
+                textAlign: TextAlign.justify,
               ),
             ],
           ),
