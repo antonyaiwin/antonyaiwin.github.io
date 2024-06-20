@@ -69,6 +69,12 @@ flutter:
     - assets/images/project/screenshots/grocery_store/
     - assets/images/project/screenshots/zomato_ui/
     - assets/images/project/screenshots/news_app/
+    - assets/images/project/screenshots/quiz_app/
+    - assets/images/project/screenshots/notes_app/
+    - assets/images/project/screenshots/todo_app/
+    - assets/images/project/screenshots/expense_tracker/
+    - assets/images/project/screenshots/instagram_ui/
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

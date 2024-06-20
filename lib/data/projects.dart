@@ -8,6 +8,7 @@ List<ProjectModel> projectList = [
     title: 'Grocery Store (E-Commerce)',
     subtitle: 'subtitle',
     summary: 'summary',
+    gitLink: 'https://github.com/antonyaiwin/flutter_grocery_store_app',
     images: [
       CarouselModel(
         title: 'Home Page',
@@ -49,6 +50,7 @@ List<ProjectModel> projectList = [
     title: 'News App using REST API',
     subtitle: 'subtitle',
     summary: 'summary',
+    gitLink: 'https://github.com/antonyaiwin/flutter_news_app_using_news_api/',
     images: [
       CarouselModel(
         title: 'Home Page',
@@ -92,9 +94,123 @@ List<ProjectModel> projectList = [
 
   // #3 project
   ProjectModel(
+    title: 'TODO Application',
+    subtitle: 'subtitle',
+    summary: 'summary',
+    gitLink:
+        'https://github.com/antonyaiwin/flutter_todo_app_with_hive_storage',
+    images: [
+      CarouselModel(
+        title: 'TODO List',
+        subtitle: '',
+        image: ImageConstants.todoAppHome,
+      ),
+      CarouselModel(
+        title: 'Add TODO',
+        subtitle: '',
+        image: ImageConstants.todoAppAddItem,
+      ),
+    ],
+    skills: [
+      'Flutter',
+      'Dart',
+      'Hive',
+      'Type Adapter',
+    ],
+  ),
+
+  // #4 project
+  ProjectModel(
+    title: 'Expense Tracker',
+    subtitle: 'subtitle',
+    summary: 'summary',
+    gitLink: 'https://github.com/antonyaiwin/flutter_expense_tracker',
+    images: [
+      CarouselModel(
+        title: 'Expense Summary',
+        subtitle: '',
+        image: ImageConstants.expenseTrackerSummary,
+      ),
+      CarouselModel(
+        title: 'Add New Income/Expense',
+        subtitle: '',
+        image: ImageConstants.expenseTrackerAddRecord,
+      ),
+    ],
+    skills: [
+      'Flutter',
+      'Dart',
+      'Provider',
+      'Sqflite',
+    ],
+  ),
+
+  // #5 project
+  ProjectModel(
+    title: 'Notes Application',
+    subtitle: 'subtitle',
+    summary: 'summary',
+    gitLink: 'https://github.com/antonyaiwin/flutter_notes_app',
+    images: [
+      CarouselModel(
+        title: 'Home Page',
+        subtitle: '',
+        image: ImageConstants.notesAppHome,
+      ),
+      CarouselModel(
+        title: 'Add New Note',
+        subtitle: '',
+        image: ImageConstants.notesAppAddNote,
+      ),
+    ],
+    skills: [
+      'Flutter',
+      'Dart',
+      'Hive',
+      'Share Plus',
+    ],
+  ),
+
+  // #6 project
+  ProjectModel(
+    title: 'Quiz Application',
+    subtitle: 'subtitle',
+    summary: 'summary',
+    gitLink: 'https://github.com/antonyaiwin/flutter_quiz_app',
+    images: [
+      CarouselModel(
+        title: 'Home Page',
+        subtitle: '',
+        image: ImageConstants.quizAppHome,
+      ),
+      CarouselModel(
+        title: 'Questions',
+        subtitle: '',
+        image: ImageConstants.quizAppQuestion,
+      ),
+      CarouselModel(
+        title: 'Correct Answer',
+        subtitle: '',
+        image: ImageConstants.quizAppQuestionCorrect,
+      ),
+      CarouselModel(
+        title: 'Quiz Summary',
+        subtitle: '',
+        image: ImageConstants.quizAppSummary,
+      ),
+    ],
+    skills: [
+      'Flutter',
+      'Dart',
+    ],
+  ),
+
+  // #7 project
+  ProjectModel(
     title: 'Zomato UI Clone',
     subtitle: 'subtitle',
     summary: 'summary',
+    gitLink: 'https://github.com/antonyaiwin/flutter_zomato_clone/',
     images: [
       CarouselModel(
         title: 'Login Page',
@@ -147,6 +263,43 @@ List<ProjectModel> projectList = [
       'Dart',
       'Shared Preferences',
       'Google Fonts',
+    ],
+  ),
+
+  // #8 project
+  ProjectModel(
+    title: 'Instagram UI Clone',
+    subtitle: 'subtitle',
+    summary: 'summary',
+    gitLink: 'https://github.com/antonyaiwin/flutter_instagram_clone',
+    liveLink: 'https://antonyaiwin.github.io/flutter_instagram_clone/',
+    images: [
+      CarouselModel(
+        title: 'Login Page',
+        subtitle: '',
+        image: ImageConstants.instagramLogin,
+      ),
+      CarouselModel(
+        title: 'Account Selection Page',
+        subtitle: '',
+        image: ImageConstants.instagramAccountSelect,
+      ),
+      CarouselModel(
+        title: 'Home Page',
+        subtitle: '',
+        image: ImageConstants.instagramHome,
+      ),
+      CarouselModel(
+        title: 'Search Page',
+        subtitle: '',
+        image: ImageConstants.instagramSearch,
+      ),
+    ],
+    skills: [
+      'Flutter',
+      'Dart',
+      'Staggered Grid',
+      'Staggered Grid',
     ],
   ),
 ];
