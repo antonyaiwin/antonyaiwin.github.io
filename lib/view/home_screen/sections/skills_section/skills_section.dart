@@ -15,6 +15,7 @@ class SkillsSection extends StatelessWidget {
         Wrap(
           spacing: 10,
           runSpacing: 10,
+          alignment: WrapAlignment.spaceBetween,
           children: List.generate(
             skillList.length,
             (index) => ProjectSkillsWidget(

@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
-
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -12,6 +10,7 @@ import 'package:flutter_personal_portfolio/view/home_screen/sections/projects_se
 import 'package:flutter_personal_portfolio/view/home_screen/sections/skills_section/skills_section.dart';
 import 'package:flutter_personal_portfolio/view/home_screen/sections/work_section/work_section.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../controller/home_screen_controller.dart';
 import 'components/home_screen_back_to_top_floating_button.dart';
@@ -27,27 +26,12 @@ class HomeScreen extends StatelessWidget {
     var provider = context.read<HomeScreenController>();
     return Scaffold(
       key: provider.scaffoldKey,
-      endDrawer: isMobile(context) ? HomeScreenDrawer() : null,
+      endDrawer: isbelow750(context) ? const HomeScreenDrawer() : null,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Text('antony aiwin'),
+        title: const Text('antony aiwin'),
         backgroundColor: Colors.transparent,
-        actions: isMobile(context)
-            ? null
-            : List.generate(
-                provider.navBarItems.length,
-                (index) => TextButton(
-                  onPressed: () {
-                    provider.scrollToChild(provider.keys[index]);
-                  },
-                  child: Text(
-                    provider.navBarItems[index],
-                    style: TextStyle(
-                      color: ColorConstants.secondaryGreen,
-                    ),
-                  ),
-                ),
-              ).toList(),
+        actions: isbelow750(context) ? _mobileNav() : _desktopNav(provider),
         flexibleSpace: ClipRRect(
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
@@ -59,34 +43,79 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Align(
         alignment: Alignment.topCenter,
-        child: ConstrainedBox(
-          constraints: BoxConstraints.loose(Size.fromWidth(1000)),
-          child: SingleChildScrollView(
-            controller: context.read<HomeScreenController>().scrollController,
-            padding: EdgeInsets.all(15).copyWith(
-              top: 50,
-            ),
-            child: Column(
-              children: [
-                ProfileSection(key: provider.keys[0]),
-                const SizedBox(height: sectionSpacing),
-                AboutSection(key: provider.keys[1]),
-                const SizedBox(height: sectionSpacing),
-                SkillsSection(),
-                const SizedBox(height: sectionSpacing),
-                WorkSection(key: provider.keys[2]),
-                const SizedBox(height: sectionSpacing),
-                ProjectsSection(key: provider.keys[3]),
-                const SizedBox(height: sectionSpacing),
-                ContactSection(key: provider.keys[4]),
-                const SizedBox(height: sectionSpacing),
-                FooterSection(),
-              ],
+        child: SingleChildScrollView(
+          controller: context.read<HomeScreenController>().scrollController,
+          padding: const EdgeInsets.all(15).copyWith(
+            top: 50,
+          ),
+          child: Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints.loose(const Size.fromWidth(1000)),
+              child: Column(
+                children: [
+                  ProfileSection(key: provider.keys[0]),
+                  const SizedBox(height: sectionSpacing),
+                  AboutSection(key: provider.keys[1]),
+                  const SizedBox(height: sectionSpacing),
+                  const SkillsSection(),
+                  const SizedBox(height: sectionSpacing),
+                  WorkSection(key: provider.keys[2]),
+                  const SizedBox(height: sectionSpacing),
+                  ProjectsSection(key: provider.keys[3]),
+                  const SizedBox(height: sectionSpacing),
+                  ContactSection(key: provider.keys[4]),
+                  const SizedBox(height: sectionSpacing),
+                  const FooterSection(),
+                ],
+              ),
             ),
           ),
         ),
       ),
-      floatingActionButton: HomeScreenBackToTopFloatingButton(),
+      floatingActionButton: const HomeScreenBackToTopFloatingButton(),
     );
+  }
+
+  List<Widget> _desktopNav(HomeScreenController provider) {
+    return [
+      ...List.generate(
+        provider.navBarItems.length,
+        (index) => TextButton(
+          onPressed: () {
+            provider.scrollToChild(provider.keys[index]);
+          },
+          child: Text(
+            provider.navBarItems[index],
+            style: const TextStyle(
+              color: ColorConstants.secondaryGreen,
+            ),
+          ),
+        ),
+      ),
+      const SizedBox(width: 5),
+      OutlinedButton(
+        onPressed: () {
+          launchUrl(Uri.parse('/Antony-Aiwin-Flutter-Developer.pdf'));
+        },
+        child: const Text('My Resume'),
+      ),
+      const SizedBox(width: 10),
+    ];
+  }
+
+  List<Widget> _mobileNav() {
+    return [
+      Builder(builder: (context) {
+        return IconButton(
+          onPressed: () {
+            Scaffold.of(context).openEndDrawer();
+          },
+          icon: Transform.flip(
+            flipX: true,
+            child: const Icon(Icons.sort),
+          ),
+        );
+      }),
+    ];
   }
 }

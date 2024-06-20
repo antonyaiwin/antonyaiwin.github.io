@@ -1,6 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_personal_portfolio/core/constants/color_constants.dart';
+import 'package:icons_plus/icons_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../global_widgets/elevated_container.dart';
 import '../../../../../model/project_model.dart';
@@ -65,6 +67,39 @@ class ProjectCard extends StatelessWidget {
               ),
             ),
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              if (item.gitLink != null)
+                Flexible(
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: OutlinedButton.icon(
+                      onPressed: () {
+                        launchUrl(Uri.parse(item.gitLink!));
+                      },
+                      icon: const Icon(EvaIcons.github_outline),
+                      label: const Text('View on GitHub'),
+                    ),
+                  ),
+                ),
+              if (item.gitLink != null && item.liveLink != null)
+                const SizedBox(width: 10),
+              if (item.liveLink != null)
+                Flexible(
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: OutlinedButton.icon(
+                      onPressed: () {
+                        launchUrl(Uri.parse(item.liveLink!));
+                      },
+                      icon: const Icon(EvaIcons.globe_2_outline),
+                      label: const Text('View Live Demo'),
+                    ),
+                  ),
+                ),
+            ],
+          )
         ],
       ),
     );

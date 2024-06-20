@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_personal_portfolio/data/projects.dart';
 import 'package:flutter_personal_portfolio/global_widgets/subtitle.dart';
+import 'package:flutter_personal_portfolio/utils/screen_utils/responsive.dart';
 
 import 'components/project_card.dart';
 
@@ -17,10 +18,11 @@ class ProjectsSection extends StatelessWidget {
         const SizedBox(height: 20),
         GridView.builder(
           padding: EdgeInsets.zero,
-          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 500,
+          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 600,
             mainAxisSpacing: 10,
             crossAxisSpacing: 10,
+            childAspectRatio: isMobile(context) ? 10 / 12 : 10 / 11,
           ),
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),

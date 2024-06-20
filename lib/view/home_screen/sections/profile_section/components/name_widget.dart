@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_personal_portfolio/core/constants/color_constants.dart';
-import 'package:flutter_personal_portfolio/core/constants/string_constants.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:icons_plus/icons_plus.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../utils/screen_utils/responsive.dart';
+import 'social_media_buttons.dart';
 
 class NameWidget extends StatelessWidget {
   const NameWidget({
@@ -39,7 +37,7 @@ class NameWidget extends StatelessWidget {
             fontSize: 25,
             color: Colors.white70,
           ),
-          textAlign: TextAlign.center,
+          textAlign: isMobile(context) ? TextAlign.center : null,
         ),
         Text(
           'Crafting beautiful, high-performance cross-platform mobile applications with Flutter.',
@@ -49,37 +47,7 @@ class NameWidget extends StatelessWidget {
           ),
           textAlign: isMobile(context) ? TextAlign.center : TextAlign.start,
         ),
-        Row(
-          mainAxisAlignment: isMobile(context)
-              ? MainAxisAlignment.center
-              : MainAxisAlignment.start,
-          children: [
-            IconButton(
-              onPressed: () {
-                launchUrl(Uri.parse(linkedinUrl));
-              },
-              icon: const Icon(
-                FontAwesome.linkedin_brand,
-              ),
-            ),
-            IconButton(
-              onPressed: () {
-                launchUrl(Uri.parse(githubUrl));
-              },
-              icon: const Icon(
-                EvaIcons.github,
-              ),
-            ),
-            IconButton(
-              onPressed: () {
-                launchUrl(Uri.parse(stackOverflowUrl));
-              },
-              icon: const Icon(
-                TeenyIcons.stackoverflow,
-              ),
-            ),
-          ],
-        )
+        const SocialMediaButtons()
       ],
     );
   }
