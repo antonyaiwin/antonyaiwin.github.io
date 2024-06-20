@@ -1,6 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 
 class HomeScreenController extends ChangeNotifier {
@@ -22,7 +19,7 @@ class HomeScreenController extends ChangeNotifier {
     scrollController.addListener(
       () {
         var offset = scrollController.offset;
-        log('$showBackToTop : $offset');
+        // log('$showBackToTop : $offset');
 
         if (showBackToTop && offset < 100) {
           showBackToTop = !showBackToTop;
@@ -42,7 +39,7 @@ class HomeScreenController extends ChangeNotifier {
       final box = context.findRenderObject() as RenderBox;
       final offset = box.localToGlobal(Offset.zero,
           ancestor: context.findRenderObject()?.parent as RenderObject);
-      log(' child offet : $offset');
+      // log(' child offet : $offset');
       // Scroll to the offset
       scrollController.animateTo(
         offset.dy - kToolbarHeight /* +
