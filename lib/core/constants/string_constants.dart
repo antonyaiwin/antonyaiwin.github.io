@@ -3,6 +3,7 @@ const String githubUrl = 'https://github.com/antonyaiwin';
 const String stackOverflowUrl =
     'https://stackoverflow.com/users/11102588/antony-aiwin-k-x';
 const String mailUrl = 'mailto:antonyaiwin007@gmail.com';
+const String resumeLink = '/Antony-Aiwin-Flutter-Developer.pdf';
 
 const String aboutMe = '''
 I'm a software developer specializing in cross-platform mobile application development using Flutter framework. 

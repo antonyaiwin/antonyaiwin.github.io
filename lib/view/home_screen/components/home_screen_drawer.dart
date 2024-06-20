@@ -3,6 +3,8 @@ import 'package:flutter_personal_portfolio/controller/home_screen_controller.dar
 import 'package:flutter_personal_portfolio/core/constants/color_constants.dart';
 import 'package:provider/provider.dart';
 
+import 'resume_button.dart';
+
 class HomeScreenDrawer extends StatelessWidget {
   const HomeScreenDrawer({
     super.key,
@@ -34,6 +36,8 @@ class HomeScreenDrawer extends StatelessWidget {
                     ),
                   ),
                 ),
+                const SizedBox(height: 20),
+                const ResumeButton(),
               ],
             ),
           );

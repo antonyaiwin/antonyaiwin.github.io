@@ -10,11 +10,11 @@ import 'package:flutter_personal_portfolio/view/home_screen/sections/projects_se
 import 'package:flutter_personal_portfolio/view/home_screen/sections/skills_section/skills_section.dart';
 import 'package:flutter_personal_portfolio/view/home_screen/sections/work_section/work_section.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../controller/home_screen_controller.dart';
 import 'components/home_screen_back_to_top_floating_button.dart';
 import 'components/home_screen_drawer.dart';
+import 'components/resume_button.dart';
 import 'sections/profile_section/profile_section.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -93,12 +93,7 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       const SizedBox(width: 5),
-      OutlinedButton(
-        onPressed: () {
-          launchUrl(Uri.parse('/Antony-Aiwin-Flutter-Developer.pdf'));
-        },
-        child: const Text('My Resume'),
-      ),
+      const ResumeButton(),
       const SizedBox(width: 10),
     ];
   }
