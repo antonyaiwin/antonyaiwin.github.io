@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_personal_portfolio/controller/contact_section_controller.dart';
 import 'package:flutter_personal_portfolio/controller/home_screen_controller.dart';
 import 'package:flutter_personal_portfolio/core/constants/color_constants.dart';
 import 'package:flutter_personal_portfolio/view/home_screen/home_screen.dart';
@@ -18,7 +19,10 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (context) => HomeScreenController(),
-        )
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ContactSectionController(),
+        ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -29,7 +33,11 @@ class MyApp extends StatelessWidget {
             seedColor: Colors.deepPurple,
             brightness: Brightness.dark,
           ),
-          textTheme: GoogleFonts.lexendTextTheme().copyWith(),
+          textTheme: GoogleFonts.lexendTextTheme().copyWith(
+            bodyLarge: GoogleFonts.lexendTextTheme().bodyLarge?.copyWith(
+                  color: ColorConstants.primaryWhite,
+                ),
+          ),
           inputDecorationTheme: InputDecorationTheme(
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
