@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_personal_portfolio/core/constants/color_constants.dart';
 import 'package:flutter_personal_portfolio/utils/screen_utils/responsive.dart';
+import 'package:flutter_personal_portfolio/view/greetings_screen/greetings_screen.dart';
 import 'package:flutter_personal_portfolio/view/home_screen/sections/about_section/about_section.dart';
 import 'package:flutter_personal_portfolio/view/home_screen/sections/contact_section/contact_section.dart';
 import 'package:flutter_personal_portfolio/view/home_screen/sections/footer_section/footer_section.dart';
@@ -29,49 +30,65 @@ class HomeScreen extends StatelessWidget {
       child: Scaffold(
         key: provider.scaffoldKey,
         endDrawer: isbelow750(context) ? const HomeScreenDrawer() : null,
-        extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          title: const Text('antony aiwin'),
-          backgroundColor: Colors.transparent,
-          actions: isbelow750(context) ? _mobileNav() : _desktopNav(provider),
-          flexibleSpace: ClipRRect(
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-              child: Container(
-                color: ColorConstants.navy.withOpacity(0.7),
+        body: Consumer<HomeScreenController>(
+          builder: (BuildContext context, value, Widget? child) =>
+              CustomScrollView(
+            physics: value.scrollPhysics,
+            slivers: [
+              const SliverToBoxAdapter(
+                child: GreetingsScreen(),
               ),
-            ),
-          ),
-        ),
-        body: Align(
-          alignment: Alignment.topCenter,
-          child: SingleChildScrollView(
-            controller: context.read<HomeScreenController>().scrollController,
-            padding: const EdgeInsets.all(15).copyWith(
-              top: 50,
-            ),
-            child: Center(
-              child: ConstrainedBox(
-                constraints: BoxConstraints.loose(const Size.fromWidth(1000)),
-                child: Column(
-                  children: [
-                    ProfileSection(key: provider.keys[0]),
-                    const SizedBox(height: sectionSpacing),
-                    AboutSection(key: provider.keys[1]),
-                    const SizedBox(height: sectionSpacing),
-                    const SkillsSection(),
-                    const SizedBox(height: sectionSpacing),
-                    WorkSection(key: provider.keys[2]),
-                    const SizedBox(height: sectionSpacing),
-                    ProjectsSection(key: provider.keys[3]),
-                    const SizedBox(height: sectionSpacing),
-                    ContactSection(key: provider.keys[4]),
-                    const SizedBox(height: sectionSpacing),
-                    const FooterSection(),
-                  ],
+              SliverAppBar(
+                title: const Text('antony aiwin'),
+                pinned: true,
+                backgroundColor: Colors.transparent,
+                actions:
+                    isbelow750(context) ? _mobileNav() : _desktopNav(provider),
+                flexibleSpace: ClipRRect(
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                    child: Container(
+                      color: ColorConstants.navy.withOpacity(0.7),
+                    ),
+                  ),
                 ),
               ),
-            ),
+              SliverToBoxAdapter(
+                child: Align(
+                  alignment: Alignment.topCenter,
+                  child: SingleChildScrollView(
+                    controller:
+                        context.read<HomeScreenController>().scrollController,
+                    padding: const EdgeInsets.all(15).copyWith(
+                      top: 50,
+                    ),
+                    child: Center(
+                      child: ConstrainedBox(
+                        constraints:
+                            BoxConstraints.loose(const Size.fromWidth(1000)),
+                        child: Column(
+                          children: [
+                            ProfileSection(key: provider.keys[0]),
+                            const SizedBox(height: sectionSpacing),
+                            AboutSection(key: provider.keys[1]),
+                            const SizedBox(height: sectionSpacing),
+                            const SkillsSection(),
+                            const SizedBox(height: sectionSpacing),
+                            WorkSection(key: provider.keys[2]),
+                            const SizedBox(height: sectionSpacing),
+                            ProjectsSection(key: provider.keys[3]),
+                            const SizedBox(height: sectionSpacing),
+                            ContactSection(key: provider.keys[4]),
+                            const SizedBox(height: sectionSpacing),
+                            const FooterSection(),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
         floatingActionButton: const HomeScreenBackToTopFloatingButton(),

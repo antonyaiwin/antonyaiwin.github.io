@@ -61,4 +61,7 @@ class ColorConstants {
   static const Color white54 = Colors.white54;
   static const Color white60 = Colors.white60;
   static const Color white70 = Colors.white70;
+
+  // greetings bg
+  static const Color greetingsBackground = Colors.white; // Color(0xFF1C1D20);
 }

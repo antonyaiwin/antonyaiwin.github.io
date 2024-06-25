@@ -13,6 +13,7 @@ class HomeScreenController extends ChangeNotifier {
     'Contact',
   ];
   ScrollController scrollController = ScrollController();
+  ScrollPhysics? scrollPhysics = const NeverScrollableScrollPhysics();
   HomeScreenController() {
     _initListener();
   }
@@ -32,6 +33,12 @@ class HomeScreenController extends ChangeNotifier {
       },
     );
     scrollController.addListener(scrollListener);
+  }
+
+  //remove scroll physics
+  removeScrollPhysics() {
+    scrollPhysics = null;
+    notifyListeners();
   }
 
   // ScrollController Listener for scrolling listview and tabbar

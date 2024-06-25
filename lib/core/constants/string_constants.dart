@@ -16,3 +16,22 @@ const String aboutMe = '''
 I'm a software developer specializing in cross-platform mobile application development using Flutter framework. 
 I also love exploring new technologies and frameworks to expand my expertise and bring innovative solutions to life. 
 I am eager to contribute to exciting projects and collaborate with like-minded professionals.''';
+
+List<String> greetings = [
+  'Hello', // English
+  'ഹലോ', // Malayalam
+  'Hola', // Spanish
+  'Bonjour', // French
+  'Hallo', // German
+  'Ciao', // Italian
+  'Olá', // Portuguese
+  'Привет', // Russian
+  'नमस्ते', // Hindi
+  'Selam', // Turkish
+  'Hej', // Swedish
+  'Hei', // Norwegian
+  'Ahoj', // Czech
+  'Zdravo', // Serbian
+  'Szia', // Hungarian
+  'Goddag', // Danish
+];
