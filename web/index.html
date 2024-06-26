@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -14,7 +15,7 @@
     This is a placeholder for base href that will be replaced by the value of
     the `--base-href` argument provided to `flutter build`.
   -->
-  <base href="$FLUTTER_BASE_HREF">
+  <base href="">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
@@ -27,33 +28,110 @@
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="favicon.png" />
 
   <title>flutter_personal_portfolio</title>
   <link rel="manifest" href="manifest.json">
+  <style>
+    body {
+      display: flex;
+      background-color: #0A192F;
+      height: 100vh;
+      margin: 0;
+    }
 
-  <script>
-    // The value below is injected by flutter build, do not touch.
-    const serviceWorkerVersion = null;
-  </script>
-  <!-- This script adds the flutter initialization JS code -->
-  <script src="flutter.js" defer></script>
+    .cube {
+      margin: auto;
+      font-size: 24px;
+      height: 1em;
+      width: 1em;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: cube-spin 1.5s infinite ease-in-out alternate both;
+    }
+
+    .side {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      transform-style: preserve-3d;
+    }
+
+    .side::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #64ffda;
+      transform: translatez(0.5em);
+      animation: cube-explode 1.5s infinite ease-in-out;
+      opacity: 0.5;
+    }
+
+    .side:nth-child(1) {
+      transform: rotatey(90deg);
+    }
+
+    .side:nth-child(2) {
+      transform: rotatey(180deg);
+    }
+
+    .side:nth-child(3) {
+      transform: rotatey(270deg);
+    }
+
+    .side:nth-child(4) {
+      transform: rotatey(360deg);
+    }
+
+    .side:nth-child(5) {
+      transform: rotatex(90deg);
+    }
+
+    .side:nth-child(6) {
+      transform: rotatex(270deg);
+    }
+
+    @keyframes cube-spin {
+      0% {
+        transform: rotatex(35.264deg) rotatey(45deg);
+      }
+
+      100% {
+        transform: rotatex(35.264deg) rotatey(405deg);
+      }
+    }
+
+    @keyframes cube-explode {
+      0% {
+        transform: translatez(0.5em);
+      }
+
+      50% {
+        transform: translatez(0.75em);
+      }
+
+      100% {
+        transform: translatez(0.5em);
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <script>
-    window.addEventListener('load', function(ev) {
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        },
-        onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine().then(function(appRunner) {
-            appRunner.runApp();
-          });
-        }
-      });
-    });
-  </script>
+  <div class="cube">
+    <div class="side"></div>
+    <div class="side"></div>
+    <div class="side"></div>
+    <div class="side"></div>
+    <div class="side"></div>
+    <div class="side"></div>
+  </div>
+  <script src="flutter_bootstrap.js" async></script>
 </body>
+
 </html>
