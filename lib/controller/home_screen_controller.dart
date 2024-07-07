@@ -17,6 +17,9 @@ class HomeScreenController extends ChangeNotifier {
   HomeScreenController() {
     _initListener();
   }
+
+  GlobalKey scrollViewKey = GlobalKey();
+
   void _initListener() {
     scrollController.addListener(
       () {

@@ -33,6 +33,8 @@ class HomeScreen extends StatelessWidget {
         body: Consumer<HomeScreenController>(
           builder: (BuildContext context, value, Widget? child) =>
               CustomScrollView(
+            key: provider.scrollViewKey,
+            controller: context.read<HomeScreenController>().scrollController,
             physics: value.scrollPhysics,
             slivers: [
               const SliverToBoxAdapter(
@@ -56,11 +58,9 @@ class HomeScreen extends StatelessWidget {
               SliverToBoxAdapter(
                 child: Align(
                   alignment: Alignment.topCenter,
-                  child: SingleChildScrollView(
-                    controller:
-                        context.read<HomeScreenController>().scrollController,
+                  child: Padding(
                     padding: const EdgeInsets.all(15).copyWith(
-                      top: 50,
+                      top: 15,
                     ),
                     child: Center(
                       child: ConstrainedBox(
@@ -111,7 +111,7 @@ class HomeScreen extends StatelessWidget {
             indicatorSize: TabBarIndicatorSize.tab,
             isScrollable: true,
             dividerHeight: 0,
-            overlayColor: MaterialStatePropertyAll(
+            overlayColor: WidgetStatePropertyAll(
               ColorConstants.secondaryGreen.withOpacity(0.15),
             ),
             splashBorderRadius: BorderRadius.circular(10),
