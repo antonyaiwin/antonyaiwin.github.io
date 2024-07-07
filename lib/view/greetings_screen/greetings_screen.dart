@@ -64,8 +64,9 @@ class GreetingsScreen extends StatelessWidget {
               ClipPath(
             clipper: BottomRounded(),
             child: AnimatedContainer(
+              curve: Easing.emphasizedDecelerate,
               duration: const Duration(
-                milliseconds: 1000,
+                milliseconds: 700,
               ),
               height: value.roundedContainerHeight,
               width: double.infinity,

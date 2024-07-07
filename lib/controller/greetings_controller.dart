@@ -23,14 +23,27 @@ class GreetingsController extends ChangeNotifier {
     Timer.periodic(const Duration(milliseconds: 100), (timer) {
       if (index >= greetings.length - 1) {
         timer.cancel();
-        Future.delayed(const Duration(seconds: 1)).then((value) {
-          textOpacity = 0;
-          containerHeight = 0;
-          roundedContainerHeight = 0;
-          opacityDuration = 400;
-          notifyListeners();
-          context?.read<HomeScreenController>().removeScrollPhysics();
-        });
+        // Future.delayed(const Duration(seconds: 1)).then((value) {
+
+        //   // context?.read<HomeScreenController>().removeScrollPhysics();
+        // });
+        Timer(
+          const Duration(milliseconds: 1000),
+          () {
+            textOpacity = 0;
+            containerHeight = 0;
+            opacityDuration = 400;
+            notifyListeners();
+          },
+        );
+        Timer(
+          const Duration(milliseconds: 1300),
+          () {
+            roundedContainerHeight = 0;
+            notifyListeners();
+            context?.read<HomeScreenController>().removeScrollPhysics();
+          },
+        );
 
         return;
       }
