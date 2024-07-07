@@ -53,22 +53,50 @@ class MyApp extends StatelessWidget {
                 ),
             isDense: true,
           ),
-          outlinedButtonTheme: OutlinedButtonThemeData(
+          elevatedButtonTheme: ElevatedButtonThemeData(
             style: ButtonStyle(
-              side: const MaterialStatePropertyAll(
-                BorderSide(
-                  color: ColorConstants.secondaryGreen,
-                ),
-              ),
-              shape: MaterialStatePropertyAll(
+              // side: const WidgetStatePropertyAll(
+              //   BorderSide(
+              //     color: ColorConstants.secondaryGreen,
+              //   ),
+              // ),
+              shape: WidgetStatePropertyAll(
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
               ),
-              foregroundColor: const MaterialStatePropertyAll(
+              foregroundColor: const WidgetStatePropertyAll(
+                ColorConstants.primaryWhite,
+              ),
+              backgroundColor: const WidgetStatePropertyAll(
+                ColorConstants.secondaryGreen2,
+              ),
+              overlayColor: WidgetStatePropertyAll(
+                ColorConstants.secondaryGreen.withOpacity(0.15),
+              ),
+              textStyle: WidgetStatePropertyAll(
+                GoogleFonts.lexendTextTheme().bodyLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+              ),
+            ),
+          ),
+          outlinedButtonTheme: OutlinedButtonThemeData(
+            style: ButtonStyle(
+              side: const WidgetStatePropertyAll(
+                BorderSide(
+                  color: ColorConstants.secondaryGreen,
+                ),
+              ),
+              shape: WidgetStatePropertyAll(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              foregroundColor: const WidgetStatePropertyAll(
                 ColorConstants.secondaryGreen,
               ),
-              overlayColor: MaterialStatePropertyAll(
+              overlayColor: WidgetStatePropertyAll(
                 ColorConstants.secondaryGreen.withOpacity(0.15),
               ),
             ),

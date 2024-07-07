@@ -54,6 +54,7 @@ class ColorConstants {
   static const Color lightNavyShadow = Color.fromRGBO(19, 40, 71, 1);
   static const Color textFieldHintColor = Color(0xFF8892b0);
   static const Color secondaryGreen = Color(0xFF64ffda);
+  static const Color secondaryGreen2 = Color(0xFF15B572);
   static const Color textColor2 = Color.fromRGBO(100, 116, 139, 1);
 
   // white
