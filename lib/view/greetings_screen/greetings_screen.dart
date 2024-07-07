@@ -33,11 +33,23 @@ class GreetingsScreen extends StatelessWidget {
               child: AnimatedOpacity(
                 opacity: value.textOpacity,
                 duration: Duration(milliseconds: value.opacityDuration),
-                child: Text(
-                  '• ${greetings[value.index]}',
-                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                        color: ColorConstants.primaryWhite,
+                child: Stack(
+                  children: List.generate(
+                    greetings.length,
+                    (index) => AnimatedOpacity(
+                      opacity: index == value.index ? 1.0 : 0.0,
+                      duration: const Duration(milliseconds: 20),
+                      child: Text(
+                        '• ${greetings[index]}',
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineMedium
+                            ?.copyWith(
+                              color: ColorConstants.primaryWhite,
+                            ),
                       ),
+                    ),
+                  ),
                 ),
                 onEnd: () {
                   value.initTextTimer();
