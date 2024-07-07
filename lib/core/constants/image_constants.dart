@@ -1,5 +1,6 @@
 class ImageConstants {
   static const String profilePicture = 'assets/images/profile_image.jpg';
+  static const String phoneFrame = 'assets/images/phone_frame.webp';
 
   // grocery store project
   static const String groceryStoreHome =

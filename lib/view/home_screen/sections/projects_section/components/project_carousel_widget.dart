@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_personal_portfolio/core/constants/color_constants.dart';
+import 'package:flutter_personal_portfolio/core/constants/image_constants.dart';
 
 import '../../../../../model/carousel_model.dart';
 
@@ -39,9 +42,29 @@ class _ProjectCarouselImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      item.image,
-      fit: BoxFit.cover,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: AspectRatio(
+        aspectRatio: 1544 / 3023,
+        child: LayoutBuilder(builder: (context, constraints) {
+          log(constraints.toString());
+          return Stack(
+            children: [
+              Positioned(
+                top: constraints.maxHeight * 2.05094277 / 100,
+                left: constraints.maxWidth * 3.04404145 / 100,
+                right: constraints.maxWidth * 3.56217617 / 100,
+                bottom: constraints.maxHeight * 2.6463777 / 100,
+                child: Image.asset(
+                  item.image,
+                  fit: BoxFit.contain,
+                ),
+              ),
+              Image.asset(ImageConstants.phoneFrame),
+            ],
+          );
+        }),
+      ),
     );
   }
 }
