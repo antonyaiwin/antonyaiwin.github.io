@@ -1,4 +1,4 @@
-import 'dart:developer';
+// import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_personal_portfolio/controller/home_screen_controller.dart';
@@ -6,43 +6,43 @@ import 'package:provider/provider.dart';
 
 final GlobalKey childKey = GlobalKey();
 
-class ParallaxScrollView extends StatefulWidget {
-  const ParallaxScrollView({super.key});
+// class ParallaxScrollView extends StatefulWidget {
+//   const ParallaxScrollView({super.key});
 
-  @override
-  _ParallaxScrollViewState createState() => _ParallaxScrollViewState();
-}
+//   @override
+//   _ParallaxScrollViewState createState() => _ParallaxScrollViewState();
+// }
 
-class _ParallaxScrollViewState extends State<ParallaxScrollView> {
-  final ScrollController _scrollController = ScrollController();
+// class _ParallaxScrollViewState extends State<ParallaxScrollView> {
+//   final ScrollController _scrollController = ScrollController();
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: CustomScrollView(
-        controller: _scrollController,
-        slivers: [
-          SliverList(
-            delegate: SliverChildListDelegate(
-              List.generate(30, (index) {
-                if (index == 25) {
-                  return ParallaxImage(
-                      key: childKey, scrollController: _scrollController);
-                } else {
-                  return Container(
-                    height: 200,
-                    color: Colors.blue[(index % 9 + 1) * 100],
-                    child: Center(child: Text('Item $index')),
-                  );
-                }
-              }),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: CustomScrollView(
+//         controller: _scrollController,
+//         slivers: [
+//           SliverList(
+//             delegate: SliverChildListDelegate(
+//               List.generate(30, (index) {
+//                 if (index == 25) {
+//                   return ParallaxImage(
+//                       key: childKey, scrollController: _scrollController);
+//                 } else {
+//                   return Container(
+//                     height: 200,
+//                     color: Colors.blue[(index % 9 + 1) * 100],
+//                     child: Center(child: Text('Item $index')),
+//                   );
+//                 }
+//               }),
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
 
 class ParallaxImage extends StatelessWidget {
   final ScrollController scrollController;
@@ -51,50 +51,54 @@ class ParallaxImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey[300],
+      // color: Colors.grey[300],
       child: AspectRatio(
-        aspectRatio: 1,
-        child: Stack(
-          children: [
-            AnimatedBuilder(
-              animation: scrollController,
-              builder: (context, child) {
-                // double offset = 0;
-                // if (scrollController.hasClients) {
-                // offset = scrollController.offset;
-                // }
-                double screenHeight = MediaQuery.of(context).size.height;
-                double screenWidth = MediaQuery.of(context).size.width;
+        aspectRatio: 10 / 8,
+        child: LayoutBuilder(builder: (context, constraints) {
+          return Stack(
+            children: [
+              AnimatedBuilder(
+                animation: scrollController,
+                builder: (context, child) {
+                  // double offset = 0;
+                  // if (scrollController.hasClients) {
+                  // offset = scrollController.offset;
+                  // }
+                  double screenHeight = MediaQuery.of(context).size.height;
+                  // double screenWidth =
+                  //     MediaQuery.of(context).size.width * 10 / 8;
+                  double screenWidth = constraints.maxWidth;
 
-                double lowerBound =
-                    getScrollOffset(key as GlobalKey<State<StatefulWidget>>?);
-                // double upperBound = lowerBound + screenHeight - screenWidth;
-                // log('$offset: $lowerBound: $upperBound');
+                  double lowerBound =
+                      getScrollOffset(key as GlobalKey<State<StatefulWidget>>?);
+                  // double upperBound = lowerBound + screenHeight - screenWidth;
+                  // log('$offset: $lowerBound: $upperBound');
 
-                // double parallaxOffset = offset - lowerBound;
-                double parallaxOffset = /* screenHeight - */ lowerBound;
-                parallaxOffset =
-                    (parallaxOffset * screenWidth * (9 / 16)) / screenHeight;
-                log('parallax before: $parallaxOffset');
+                  // double parallaxOffset = offset - lowerBound;
+                  double parallaxOffset = /* screenHeight - */ lowerBound;
+                  parallaxOffset =
+                      (parallaxOffset * screenWidth * (9 / 16)) / screenHeight;
+                  // log('parallax before: $parallaxOffset');
 
-                parallaxOffset = parallaxOffset.clamp(
-                    0.0,
-                    MediaQuery.of(context).size.width *
-                        (9 / 16)); // Clamp to ensure correct offset
-                log('parallax : $parallaxOffset');
-                return Positioned(
-                  top: -parallaxOffset,
-                  left: 0,
-                  right: 0,
-                  child: Image.asset(
-                    'assets/images/Artboard 3.png',
-                    fit: BoxFit.cover,
-                  ),
-                );
-              },
-            ),
-          ],
-        ),
+                  parallaxOffset = parallaxOffset.clamp(
+                      0.0,
+                      MediaQuery.of(context).size.width *
+                          (9 / 16)); // Clamp to ensure correct offset
+                  // log('parallax : $parallaxOffset');
+                  return Positioned(
+                    top: -parallaxOffset,
+                    left: 0,
+                    right: 0,
+                    child: Image.asset(
+                      'assets/images/Artboard 3.png',
+                      fit: BoxFit.cover,
+                    ),
+                  );
+                },
+              ),
+            ],
+          );
+        }),
       ),
     );
   }
@@ -118,8 +122,8 @@ class ParallaxImage extends StatelessWidget {
               .scrollViewKey
               .currentContext
               ?.findRenderObject() as RenderObject);
-      log('offsetY = $offsetY');
-      log('childoffset = $childOffset');
+      // log('offsetY = $offsetY');
+      // log('childoffset = $childOffset');
       // log(' child offet : $offset');
       // Scroll to the offset
 

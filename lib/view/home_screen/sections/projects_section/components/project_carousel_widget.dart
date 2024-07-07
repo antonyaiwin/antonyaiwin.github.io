@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_personal_portfolio/core/constants/color_constants.dart';
 import 'package:flutter_personal_portfolio/core/constants/image_constants.dart';
@@ -47,7 +45,7 @@ class _ProjectCarouselImage extends StatelessWidget {
       child: AspectRatio(
         aspectRatio: 1544 / 3023,
         child: LayoutBuilder(builder: (context, constraints) {
-          log(constraints.toString());
+          // log(constraints.toString());
           return Stack(
             children: [
               Positioned(
