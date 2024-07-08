@@ -78032,7 +78032,7 @@ o=A.aou().$0().y
 o=o==null?n:o.abN(B.bK)
 o=A.vb(n,n,n,B.SG,n,n,n,n,B.SI,n,n,n,n,n,new A.bd(q,p),n,n,new A.bd(new A.c_(j,B.q),r),n,n,n,n,new A.bd(o,t.RP),n)
 j=A.j9(8)
-return A.aBY(new A.xr(B.D7,"Flutter Demo",A.t0(n,l,new A.qh(o),s,new A.r0(A.vb(n,n,n,n,n,n,n,n,B.SH,n,n,n,n,n,new A.bd(A.T(38,100,255,218),p),n,n,new A.bd(new A.c_(j,B.q),r),B.SJ,n,n,n,n,n)),B.lc,k,!0),!1,n),m)}}
+return A.aBY(new A.xr(B.D7,"Antony Aiwin - Flutter Developer",A.t0(n,l,new A.qh(o),s,new A.r0(A.vb(n,n,n,n,n,n,n,n,B.SH,n,n,n,n,n,new A.bd(A.T(38,100,255,218),p),n,n,new A.bd(new A.c_(j,B.q),r),B.SJ,n,n,n,n,n)),B.lc,k,!0),!1,n),m)}}
 A.a5J.prototype={
 $1(a){return new A.hp($.al())},
 $S:467}
