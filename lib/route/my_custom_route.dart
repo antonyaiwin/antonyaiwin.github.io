@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -5,6 +6,16 @@ import 'package:flutter_personal_portfolio/controller/greetings_controller.dart'
 import 'package:flutter_personal_portfolio/core/constants/color_constants.dart';
 import 'package:flutter_personal_portfolio/core/constants/string_constants.dart';
 import 'package:provider/provider.dart';
+
+class MyCustomRoute extends PageRouteBuilder {
+  MyCustomRoute({required super.pageBuilder});
+  @override
+  Widget buildTransitions(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation, Widget child) {
+    return super
+        .buildTransitions(context, animation, secondaryAnimation, child);
+  }
+}
 
 class GreetingsScreen extends StatelessWidget {
   const GreetingsScreen({super.key});

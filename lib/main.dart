@@ -3,7 +3,10 @@ import 'package:flutter_personal_portfolio/controller/contact_section_controller
 import 'package:flutter_personal_portfolio/controller/greetings_controller.dart';
 import 'package:flutter_personal_portfolio/controller/home_screen_controller.dart';
 import 'package:flutter_personal_portfolio/core/constants/color_constants.dart';
+import 'package:flutter_personal_portfolio/view/greetings_screen/greetings_screen.dart';
+import 'package:flutter_personal_portfolio/view/home_screen/components/home_screen_drawer.dart';
 import 'package:flutter_personal_portfolio/view/home_screen/home_screen.dart';
+import 'package:flutter_personal_portfolio/view/route_animation/route_animation.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -103,7 +106,45 @@ class MyApp extends StatelessWidget {
           ),
           useMaterial3: true,
         ),
-        home: const HomeScreen(),
+        home: Scaffold(
+          body: Stack(
+            children: [
+              Center(
+                child: Builder(
+                  builder: (context) {
+                    return ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MultiProvider(providers: [
+                              ChangeNotifierProvider(
+                                create: (context) => GreetingsController(),
+                              ),
+                              ChangeNotifierProvider(
+                                create: (context) => HomeScreenController(),
+                              ),
+                              ChangeNotifierProvider(
+                                create: (context) => ContactSectionController(),
+                              ),
+                            ], child: const HomeScreen()),
+                          ),
+                        );
+                      },
+                      child: const Text('Home'),
+                    );
+                  },
+                ),
+              ),
+              const RouteAnimation(),
+            ],
+          ),
+        ),
+        // initialRoute: GreetingsScreen.name,
+        // routes: {
+        //   GreetingsScreen.name: (context) => const GreetingsScreen(),
+        //   HomeScreen.name: (context) => const HomeScreen(),
+        // },
       ),
     );
   }
