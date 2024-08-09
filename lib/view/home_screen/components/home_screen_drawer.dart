@@ -24,7 +24,7 @@ class HomeScreenDrawer extends StatelessWidget {
                   provider.navBarItems.length,
                   (index) => ListTile(
                     onTap: () {
-                      provider.scrollToChild(provider.keys[index]);
+                      provider.scrollToChild(index);
                       Scaffold.of(context).closeEndDrawer();
                     },
                     title: Text(

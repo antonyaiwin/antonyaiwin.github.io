@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+
+import '../view/home_screen/sections/about_section/about_section.dart';
+import '../view/home_screen/sections/contact_section/contact_section.dart';
+import '../view/home_screen/sections/footer_section/footer_section.dart';
+import '../view/home_screen/sections/profile_section/profile_section.dart';
+import '../view/home_screen/sections/projects_section/projects_section.dart';
+import '../view/home_screen/sections/skills_section/skills_section.dart';
+import '../view/home_screen/sections/work_section/work_section.dart';
 
 class HomeScreenController extends ChangeNotifier {
   bool showBackToTop = false;
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-  List<GlobalKey> keys = List.generate(5, (index) => GlobalKey());
+  List<GlobalKey> keys = List.generate(7, (index) => GlobalKey());
   BuildContext? tabContext;
   List<String> navBarItems = [
     'Profile',
@@ -12,9 +21,18 @@ class HomeScreenController extends ChangeNotifier {
     'Projects',
     'Contact',
   ];
+  List<Widget> sectionWidgets = [];
   ScrollController scrollController = ScrollController();
-  ScrollPhysics? scrollPhysics = const NeverScrollableScrollPhysics();
   HomeScreenController() {
+    sectionWidgets = [
+      const ProfileSection(),
+      const AboutSection(),
+      const SkillsSection(),
+      const WorkSection(),
+      const ProjectsSection(),
+      const ContactSection(),
+      const FooterSection(),
+    ];
     _initListener();
   }
 
@@ -36,12 +54,6 @@ class HomeScreenController extends ChangeNotifier {
       },
     );
     scrollController.addListener(scrollListener);
-  }
-
-  //remove scroll physics
-  removeScrollPhysics() {
-    scrollPhysics = null;
-    notifyListeners();
   }
 
   // ScrollController Listener for scrolling listview and tabbar
@@ -80,18 +92,30 @@ class HomeScreenController extends ChangeNotifier {
     // print('offset : ${_scrollController.offset}');
   }
 
-  Future<void> scrollToChild(GlobalKey key) async {
+  GlobalKey _getKey(int index) {
+    if (index < 2) {
+      return keys[index];
+    } else {
+      return keys[index + 1];
+    }
+  }
+
+  Future<void> scrollToChild(int index) async {
+    var key = _getKey(index);
     final context = key.currentContext;
     scrollController.removeListener(scrollListener);
     if (context != null) {
       // Get the offset of the widget
-      final box = context.findRenderObject() as RenderBox;
-      final offset = box.localToGlobal(Offset.zero,
-          ancestor: context.findRenderObject()?.parent as RenderObject);
+      final box = context.findRenderObject() as RenderSliver;
+      // final offset = box.localToGlobal(Offset.zero,
+      //     ancestor: context.findRenderObject()?.parent as RenderObject);
+      final offset = box.constraints.precedingScrollExtent;
+      // log('offset: $offset\npaintExtend : ${box.constraints.remainingPaintExtent}\nscroll offset : ${scrollController.offset}');
+      // log(box.constraints.toString());
       // log(' child offet : $offset');
       // Scroll to the offset
       await scrollController.animateTo(
-        offset.dy - kToolbarHeight /* +
+        offset - kToolbarHeight /* +
             scrollController.offset */
         , // Adjust for current scroll position
         duration: const Duration(seconds: 1),

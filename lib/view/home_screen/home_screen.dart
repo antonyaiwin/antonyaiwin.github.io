@@ -3,30 +3,22 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_personal_portfolio/core/constants/color_constants.dart';
 import 'package:flutter_personal_portfolio/utils/screen_utils/responsive.dart';
-import 'package:flutter_personal_portfolio/view/greetings_screen/greetings_screen.dart';
-import 'package:flutter_personal_portfolio/view/home_screen/sections/about_section/about_section.dart';
-import 'package:flutter_personal_portfolio/view/home_screen/sections/contact_section/contact_section.dart';
-import 'package:flutter_personal_portfolio/view/home_screen/sections/footer_section/footer_section.dart';
-import 'package:flutter_personal_portfolio/view/home_screen/sections/projects_section/projects_section.dart';
-import 'package:flutter_personal_portfolio/view/home_screen/sections/skills_section/skills_section.dart';
-import 'package:flutter_personal_portfolio/view/home_screen/sections/work_section/work_section.dart';
 import 'package:provider/provider.dart';
 
 import '../../controller/home_screen_controller.dart';
 import 'components/home_screen_back_to_top_floating_button.dart';
 import 'components/home_screen_drawer.dart';
 import 'components/resume_button.dart';
-import 'sections/profile_section/profile_section.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    const double sectionSpacing = 25;
+    // const double sectionSpacing = 25;
     var provider = context.read<HomeScreenController>();
     return DefaultTabController(
-      length: provider.keys.length,
+      length: provider.navBarItems.length,
       child: Scaffold(
         key: provider.scaffoldKey,
         endDrawer: isbelow750(context) ? const HomeScreenDrawer() : null,
@@ -35,11 +27,7 @@ class HomeScreen extends StatelessWidget {
               CustomScrollView(
             key: provider.scrollViewKey,
             controller: context.read<HomeScreenController>().scrollController,
-            physics: value.scrollPhysics,
             slivers: [
-              const SliverToBoxAdapter(
-                child: GreetingsScreen(),
-              ),
               SliverAppBar(
                 title: const Text('antony aiwin'),
                 pinned: true,
@@ -55,39 +43,28 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SliverToBoxAdapter(
-                child: Align(
-                  alignment: Alignment.topCenter,
-                  child: Padding(
-                    padding: const EdgeInsets.all(15).copyWith(
-                      top: 15,
-                    ),
-                    child: Center(
-                      child: ConstrainedBox(
-                        constraints:
-                            BoxConstraints.loose(const Size.fromWidth(1000)),
-                        child: Column(
-                          children: [
-                            ProfileSection(key: provider.keys[0]),
-                            const SizedBox(height: sectionSpacing),
-                            AboutSection(key: provider.keys[1]),
-                            const SizedBox(height: sectionSpacing),
-                            const SkillsSection(),
-                            const SizedBox(height: sectionSpacing),
-                            WorkSection(key: provider.keys[2]),
-                            const SizedBox(height: sectionSpacing),
-                            ProjectsSection(key: provider.keys[3]),
-                            const SizedBox(height: sectionSpacing),
-                            ContactSection(key: provider.keys[4]),
-                            const SizedBox(height: sectionSpacing),
-                            const FooterSection(),
-                          ],
+              ...value.sectionWidgets.map(
+                (e) => SliverToBoxAdapter(
+                  key: provider.keys[value.sectionWidgets.indexOf(e)],
+                  child: Align(
+                    alignment: Alignment.topCenter,
+                    child: Padding(
+                      padding: const EdgeInsets.all(15).copyWith(
+                        top: 25,
+                        bottom: 0,
+                      ),
+                      child: Center(
+                        child: ConstrainedBox(
+                          constraints:
+                              BoxConstraints.loose(const Size.fromWidth(1000)),
+                          child: e,
                         ),
                       ),
                     ),
                   ),
                 ),
               ),
+              const SliverPadding(padding: EdgeInsets.only(top: 15))
             ],
           ),
         ),
@@ -123,7 +100,7 @@ class HomeScreen extends StatelessWidget {
                 text: provider.navBarItems[index],
               ),
             ),
-            onTap: (int index) => provider.scrollToChild(provider.keys[index]),
+            onTap: (int index) => provider.scrollToChild(index),
           );
         },
       ),
