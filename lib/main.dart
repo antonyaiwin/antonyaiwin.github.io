@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_personal_portfolio/controller/contact_section_controller.dart';
-import 'package:flutter_personal_portfolio/controller/greetings_controller.dart';
 import 'package:flutter_personal_portfolio/controller/home_screen_controller.dart';
 import 'package:flutter_personal_portfolio/core/constants/color_constants.dart';
-import 'package:flutter_personal_portfolio/view/home_screen/home_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
+import 'view/greetings_screen/greetings_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,9 +18,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (context) => GreetingsController(),
-        ),
+        // ChangeNotifierProvider(
+        //   create: (context) => GreetingsController(),
+        // ),
         ChangeNotifierProvider(
           create: (context) => HomeScreenController(),
         ),
@@ -103,7 +103,7 @@ class MyApp extends StatelessWidget {
           ),
           useMaterial3: true,
         ),
-        home: const HomeScreen(),
+        home: const GreetingsScreen(),
       ),
     );
   }
