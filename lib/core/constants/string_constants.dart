@@ -33,5 +33,5 @@ List<String> greetings = [
   'Ahoj', // Czech
   'Zdravo', // Serbian
   'Szia', // Hungarian
-  'Goddag', // Danish
+  'Hello', // English
 ];
