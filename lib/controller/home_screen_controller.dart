@@ -66,21 +66,25 @@ class HomeScreenController extends ChangeNotifier {
     // logic to scroll tab bar index
     // double childPosition = 0;
     for (var i = keys.length - 1; i >= 0; i--) {
+      if (i == 2 || i == 6) {
+        continue;
+      }
       final context = keys[i].currentContext;
       if (context != null) {
         // Get the offset of the widget
-        final box = context.findRenderObject() as RenderBox;
-        final childOffset = box.localToGlobal(Offset.zero,
-            ancestor: context.findRenderObject()?.parent as RenderObject);
+        final box = context.findRenderObject() as RenderSliver;
+        // final offset = box.localToGlobal(Offset.zero,
+        //     ancestor: context.findRenderObject()?.parent as RenderObject);
+        final childOffset = box.constraints.precedingScrollExtent;
         // log(' child offet : $offset');
         // Scroll to the offset
 
         /* +
             scrollController.offset */
 
-        if (scrollOffset >= childOffset.dy - kToolbarHeight) {
+        if (scrollOffset >= childOffset - kToolbarHeight) {
           DefaultTabController.of(tabContext!).animateTo(
-            i,
+            i > 2 ? i - 1 : i,
           );
           break;
         }
