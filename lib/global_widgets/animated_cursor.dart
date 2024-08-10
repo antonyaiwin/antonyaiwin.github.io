@@ -48,12 +48,17 @@ class AnimatedCursor extends StatelessWidget {
                     width: value.outerCircleDiameter,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
+                      color:
+                          value.linkHover ? value.color.withOpacity(0.1) : null,
                       border: Border.all(
-                        color: value.color,
-                        width: 0.5,
+                        color: value.linkHover
+                            ? value.color.withOpacity(0.01)
+                            : value.color,
+                        width: 1,
                       ),
                     ),
                     duration: const Duration(milliseconds: 200),
+                    curve: Curves.ease,
                   ),
                 ),
               ),
