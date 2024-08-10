@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_personal_portfolio/core/constants/color_constants.dart';
+import 'package:flutter_personal_portfolio/extensions/widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../global_widgets/elevated_container.dart';
@@ -98,7 +99,7 @@ class ProjectCard extends StatelessWidget {
                       },
                       icon: const Icon(EvaIcons.githubOutline),
                       label: const Text('View on GitHub'),
-                    ),
+                    ).hover,
                   ),
                 ),
               if (item.gitLink != null && item.liveLink != null)
@@ -113,7 +114,7 @@ class ProjectCard extends StatelessWidget {
                       },
                       icon: const Icon(EvaIcons.globe2Outline),
                       label: const Text('View Live Demo'),
-                    ),
+                    ).hover,
                   ),
                 ),
             ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_personal_portfolio/controller/home_screen_controller.dart';
 import 'package:flutter_personal_portfolio/core/constants/color_constants.dart';
+import 'package:flutter_personal_portfolio/extensions/context.dart';
 import 'package:provider/provider.dart';
 
 import 'resume_button.dart';
@@ -27,6 +28,7 @@ class HomeScreenDrawer extends StatelessWidget {
                       provider.scrollToChild(index);
                       Scaffold.of(context).closeEndDrawer();
                     },
+                    onFocusChange: (value) => context.hover(value),
                     title: Text(
                       provider.navBarItems[index],
                       textAlign: TextAlign.center,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_personal_portfolio/extensions/context.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/constants/string_constants.dart';
@@ -14,6 +15,7 @@ class ResumeButton extends StatelessWidget {
       onPressed: () {
         launchUrl(Uri.parse(resumeLink));
       },
+      onHover: (value) => context.hover(value),
       child: const Text('My Resume'),
     );
   }

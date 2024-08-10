@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_personal_portfolio/controller/contact_section_controller.dart';
 import 'package:flutter_personal_portfolio/core/constants/color_constants.dart';
+import 'package:flutter_personal_portfolio/extensions/context.dart';
+import 'package:flutter_personal_portfolio/extensions/widget.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../global_widgets/elevated_container.dart';
@@ -32,7 +34,7 @@ class ContactSection extends StatelessWidget {
                   decoration:
                       const InputDecoration(hintText: 'Enter Your Name'),
                   validator: contactFormProvider.nameValidator,
-                ),
+                ).hover,
                 const SizedBox(height: 20),
                 const ContactSubtitle(
                   text: 'Email',
@@ -43,7 +45,7 @@ class ContactSection extends StatelessWidget {
                   decoration:
                       const InputDecoration(hintText: 'Enter Your Email'),
                   validator: contactFormProvider.emailValidator,
-                ),
+                ).hover,
                 const SizedBox(height: 20),
                 const ContactSubtitle(text: 'Message'),
                 const SizedBox(height: 5),
@@ -53,7 +55,7 @@ class ContactSection extends StatelessWidget {
                       const InputDecoration(hintText: 'Enter Your Message'),
                   maxLines: 5,
                   validator: contactFormProvider.messageValidator,
-                ),
+                ).hover,
                 const SizedBox(height: 15),
                 Consumer<ContactSectionController>(
                   builder: (BuildContext context,
@@ -64,6 +66,7 @@ class ContactSection extends StatelessWidget {
                         : () {
                             contactFormProvider.submitForm(context);
                           },
+                    onHover: (value) => context.hover(value),
                     child: Center(
                       child: Text(
                           value.submittingData ? 'Submitting...' : 'Submit'),

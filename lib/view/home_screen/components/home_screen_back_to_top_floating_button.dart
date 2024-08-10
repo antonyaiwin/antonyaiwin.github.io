@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_personal_portfolio/extensions/widget.dart';
 import 'package:provider/provider.dart';
 
 import '../../../controller/home_screen_controller.dart';
@@ -31,7 +32,7 @@ class HomeScreenBackToTopFloatingButton extends StatelessWidget {
             child: const Icon(
               Icons.arrow_upward_rounded,
             ),
-          ),
+          ).hover,
         );
       },
     );

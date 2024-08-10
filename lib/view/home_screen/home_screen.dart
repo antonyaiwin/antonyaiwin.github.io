@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_personal_portfolio/core/constants/color_constants.dart';
+import 'package:flutter_personal_portfolio/extensions/widget.dart';
 import 'package:flutter_personal_portfolio/utils/screen_utils/responsive.dart';
 import 'package:provider/provider.dart';
 
@@ -15,7 +16,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // const double sectionSpacing = 25;
     var provider = context.read<HomeScreenController>();
     return DefaultTabController(
       length: provider.navBarItems.length,
@@ -64,7 +64,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const SliverPadding(padding: EdgeInsets.only(top: 15))
+              const SliverPadding(padding: EdgeInsets.only(top: 15)),
             ],
           ),
         ),
@@ -101,7 +101,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             onTap: (int index) => provider.scrollToChild(index),
-          );
+          ).hover;
         },
       ),
       const SizedBox(width: 5),
@@ -122,7 +122,7 @@ class HomeScreen extends StatelessWidget {
               flipX: true,
               child: const Icon(Icons.sort),
             ),
-          );
+          ).hover;
         },
       ),
     ];
