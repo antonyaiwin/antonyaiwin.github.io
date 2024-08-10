@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_personal_portfolio/controller/contact_section_controller.dart';
 import 'package:flutter_personal_portfolio/controller/home_screen_controller.dart';
 import 'package:flutter_personal_portfolio/core/constants/color_constants.dart';
+import 'package:flutter_personal_portfolio/global_widgets/animated_cursor.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -28,82 +29,87 @@ class MyApp extends StatelessWidget {
           create: (context) => ContactSectionController(),
         ),
       ],
-      child: MaterialApp(
-        title: 'Antony Aiwin - Flutter Developer',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          scaffoldBackgroundColor: ColorConstants.scaffoldBackgroundColor,
-          colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.deepPurple,
-            brightness: Brightness.dark,
-          ),
-          textTheme: GoogleFonts.lexendTextTheme().copyWith(
-            bodyLarge: GoogleFonts.lexendTextTheme().bodyLarge?.copyWith(
-                  color: ColorConstants.primaryWhite,
-                ),
-          ),
-          inputDecorationTheme: InputDecorationTheme(
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide.none),
-            fillColor: ColorConstants.navy,
-            filled: true,
-            hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: ColorConstants.textFieldHintColor,
-                ),
-            isDense: true,
-          ),
-          elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ButtonStyle(
-              // side: const WidgetStatePropertyAll(
-              //   BorderSide(
-              //     color: ColorConstants.secondaryGreen,
-              //   ),
-              // ),
-              shape: WidgetStatePropertyAll(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
+      child: Directionality(
+        textDirection: TextDirection.ltr,
+        child: AnimatedCursor(
+          child: MaterialApp(
+            title: 'Antony Aiwin - Flutter Developer',
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              scaffoldBackgroundColor: ColorConstants.scaffoldBackgroundColor,
+              colorScheme: ColorScheme.fromSeed(
+                seedColor: Colors.deepPurple,
+                brightness: Brightness.dark,
               ),
-              foregroundColor: const WidgetStatePropertyAll(
-                ColorConstants.primaryWhite,
-              ),
-              backgroundColor: const WidgetStatePropertyAll(
-                ColorConstants.secondaryGreen2,
-              ),
-              overlayColor: WidgetStatePropertyAll(
-                ColorConstants.secondaryGreen.withOpacity(0.15),
-              ),
-              textStyle: WidgetStatePropertyAll(
-                GoogleFonts.lexendTextTheme().bodyLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
+              textTheme: GoogleFonts.lexendTextTheme().copyWith(
+                bodyLarge: GoogleFonts.lexendTextTheme().bodyLarge?.copyWith(
+                      color: ColorConstants.primaryWhite,
                     ),
               ),
-            ),
-          ),
-          outlinedButtonTheme: OutlinedButtonThemeData(
-            style: ButtonStyle(
-              side: const WidgetStatePropertyAll(
-                BorderSide(
-                  color: ColorConstants.secondaryGreen,
+              inputDecorationTheme: InputDecorationTheme(
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide.none),
+                fillColor: ColorConstants.navy,
+                filled: true,
+                hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: ColorConstants.textFieldHintColor,
+                    ),
+                isDense: true,
+              ),
+              elevatedButtonTheme: ElevatedButtonThemeData(
+                style: ButtonStyle(
+                  // side: const WidgetStatePropertyAll(
+                  //   BorderSide(
+                  //     color: ColorConstants.secondaryGreen,
+                  //   ),
+                  // ),
+                  shape: WidgetStatePropertyAll(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  foregroundColor: const WidgetStatePropertyAll(
+                    ColorConstants.primaryWhite,
+                  ),
+                  backgroundColor: const WidgetStatePropertyAll(
+                    ColorConstants.secondaryGreen2,
+                  ),
+                  overlayColor: WidgetStatePropertyAll(
+                    ColorConstants.secondaryGreen.withOpacity(0.15),
+                  ),
+                  textStyle: WidgetStatePropertyAll(
+                    GoogleFonts.lexendTextTheme().bodyLarge?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                  ),
                 ),
               ),
-              shape: WidgetStatePropertyAll(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
+              outlinedButtonTheme: OutlinedButtonThemeData(
+                style: ButtonStyle(
+                  side: const WidgetStatePropertyAll(
+                    BorderSide(
+                      color: ColorConstants.secondaryGreen,
+                    ),
+                  ),
+                  shape: WidgetStatePropertyAll(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  foregroundColor: const WidgetStatePropertyAll(
+                    ColorConstants.secondaryGreen,
+                  ),
+                  overlayColor: WidgetStatePropertyAll(
+                    ColorConstants.secondaryGreen.withOpacity(0.15),
+                  ),
                 ),
               ),
-              foregroundColor: const WidgetStatePropertyAll(
-                ColorConstants.secondaryGreen,
-              ),
-              overlayColor: WidgetStatePropertyAll(
-                ColorConstants.secondaryGreen.withOpacity(0.15),
-              ),
+              useMaterial3: true,
             ),
+            home: const GreetingsScreen(),
           ),
-          useMaterial3: true,
         ),
-        home: const GreetingsScreen(),
       ),
     );
   }
