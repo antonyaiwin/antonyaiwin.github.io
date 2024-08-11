@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_personal_portfolio/core/constants/color_constants.dart';
 import 'package:flutter_personal_portfolio/core/constants/image_constants.dart';
+import 'package:flutter_personal_portfolio/extensions/widget.dart';
 
 class ProfileAvatar extends StatelessWidget {
   const ProfileAvatar({
@@ -36,6 +37,6 @@ class ProfileAvatar extends StatelessWidget {
           alignment: Alignment.topCenter,
         ),
       ),
-    );
+    ).hover;
   }
 }

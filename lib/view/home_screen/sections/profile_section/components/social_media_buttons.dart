@@ -21,10 +21,9 @@ class SocialMediaButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: isMobile(context)
-          ? MainAxisAlignment.center
-          : MainAxisAlignment.start,
+    return Wrap(
+      alignment: isMobile(context) ? WrapAlignment.center : WrapAlignment.start,
+      spacing: 10,
       children: socialMediaMap.keys
           .map(
             (key) => IconButton(

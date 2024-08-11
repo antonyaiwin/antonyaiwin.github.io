@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_personal_portfolio/controller/contact_section_controller.dart';
 import 'package:flutter_personal_portfolio/core/constants/color_constants.dart';
-import 'package:flutter_personal_portfolio/extensions/context.dart';
 import 'package:flutter_personal_portfolio/extensions/widget.dart';
 import 'package:provider/provider.dart';
 
@@ -66,12 +65,11 @@ class ContactSection extends StatelessWidget {
                         : () {
                             contactFormProvider.submitForm(context);
                           },
-                    onHover: (value) => context.hover(value),
                     child: Center(
                       child: Text(
                           value.submittingData ? 'Submitting...' : 'Submit'),
                     ),
-                  ),
+                  ).hover,
                 ),
               ],
             ),

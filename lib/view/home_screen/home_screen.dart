@@ -81,27 +81,26 @@ class HomeScreen extends StatelessWidget {
           return TabBar(
             labelColor: ColorConstants.secondaryGreen,
             unselectedLabelColor:
-                ColorConstants.secondaryGreen.withOpacity(0.7),
+                ColorConstants.secondaryGreen.withOpacity(0.37),
             indicatorPadding:
                 const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
             indicatorColor: ColorConstants.secondaryGreen,
             indicatorSize: TabBarIndicatorSize.tab,
             isScrollable: true,
             dividerHeight: 0,
-            overlayColor: WidgetStatePropertyAll(
-              ColorConstants.secondaryGreen.withOpacity(0.15),
+            overlayColor: const WidgetStatePropertyAll(
+              Colors.transparent,
             ),
-            splashBorderRadius: BorderRadius.circular(10),
             tabAlignment: TabAlignment.start,
             labelPadding: const EdgeInsets.symmetric(horizontal: 10),
             tabs: List.generate(
               provider.navBarItems.length,
               (index) => Tab(
                 text: provider.navBarItems[index],
-              ),
+              ).hover,
             ),
             onTap: (int index) => provider.scrollToChild(index),
-          ).hover;
+          );
         },
       ),
       const SizedBox(width: 5),
