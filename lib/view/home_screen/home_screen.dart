@@ -97,7 +97,7 @@ class HomeScreen extends StatelessWidget {
               provider.navBarItems.length,
               (index) => Tab(
                 text: provider.navBarItems[index],
-              ).hover,
+              ).hoverElastic,
             ),
             onTap: (int index) => provider.scrollToChild(index),
           );
@@ -121,7 +121,7 @@ class HomeScreen extends StatelessWidget {
               flipX: true,
               child: const Icon(Icons.sort),
             ),
-          ).hover;
+          ).hoverElastic;
         },
       ),
     ];

@@ -75,7 +75,7 @@ class ProjectCard extends StatelessWidget {
                                 );
                               },
                               icon: const Icon(EvaIcons.arrowCircleLeft),
-                            ).hover,
+                            ).hoverElastic,
                           ),
                         ),
                         Expanded(
@@ -109,7 +109,7 @@ class ProjectCard extends StatelessWidget {
                                 );
                               },
                               icon: const Icon(EvaIcons.arrowCircleRight),
-                            ).hover,
+                            ).hoverElastic,
                           ),
                         ),
                       ],
@@ -172,7 +172,7 @@ class ProjectCard extends StatelessWidget {
                         },
                         icon: const Icon(EvaIcons.githubOutline),
                         label: const Text('View on GitHub'),
-                      ).hover,
+                      ).hoverElastic,
                     ),
                   ),
                 if (item.gitLink != null && item.liveLink != null)
@@ -187,7 +187,7 @@ class ProjectCard extends StatelessWidget {
                         },
                         icon: const Icon(EvaIcons.globe2Outline),
                         label: const Text('View Live Demo'),
-                      ).hover,
+                      ).hoverElastic,
                     ),
                   ),
               ],

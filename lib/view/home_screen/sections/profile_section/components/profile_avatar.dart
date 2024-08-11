@@ -37,6 +37,6 @@ class ProfileAvatar extends StatelessWidget {
           alignment: Alignment.topCenter,
         ),
       ),
-    ).hover;
+    ).hoverElastic;
   }
 }

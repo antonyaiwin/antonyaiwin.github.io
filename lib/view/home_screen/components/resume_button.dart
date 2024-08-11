@@ -16,6 +16,6 @@ class ResumeButton extends StatelessWidget {
         launchUrl(Uri.parse(resumeLink));
       },
       child: const Text('My Resume'),
-    ).hover;
+    ).hoverElastic;
   }
 }

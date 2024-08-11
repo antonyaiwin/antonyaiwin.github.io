@@ -33,7 +33,7 @@ class SocialMediaButtons extends StatelessWidget {
               icon: Icon(
                 key,
               ),
-            ).hover,
+            ).hoverElastic,
           )
           .toList(),
     );

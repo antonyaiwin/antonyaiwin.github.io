@@ -34,7 +34,7 @@ class HomeScreenBackToTopFloatingButton extends StatelessWidget {
               child: const Icon(
                 Icons.arrow_upward_rounded,
               ),
-            ).hover,
+            ).hoverElastic,
           ),
         );
       },
