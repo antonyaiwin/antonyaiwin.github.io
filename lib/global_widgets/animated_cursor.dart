@@ -1,4 +1,4 @@
-import 'dart:developer';
+// import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/src/gestures/events.dart';
@@ -101,22 +101,22 @@ class AnimatedCursor extends StatelessWidget {
   }
 
   void _onMouseHover(PointerHoverEvent event, BuildContext context) {
-    log(event.toString());
+    // log(event.toString());
     context.read<AnimatedCursorController>().updatePosition(event.position);
   }
 
   _onTapDown(TapDownDetails details, BuildContext context) {
-    log(details.toString());
+    // log(details.toString());
     context.read<AnimatedCursorController>().onTapDown();
   }
 
   _onTapUp(TapUpDetails details, BuildContext context) {
-    log(details.toString());
+    // log(details.toString());
     context.read<AnimatedCursorController>().onTapUp();
   }
 
   _onTapCancel(BuildContext context) {
-    log('onTapCancel');
+    // log('onTapCancel');
     context.read<AnimatedCursorController>().onTapUp();
   }
 
