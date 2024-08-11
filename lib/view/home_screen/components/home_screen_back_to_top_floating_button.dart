@@ -16,23 +16,26 @@ class HomeScreenBackToTopFloatingButton extends StatelessWidget {
       builder: (BuildContext context, value, Widget? child) {
         return AnimatedScale(
           scale: value.showBackToTop ? 1 : 0,
-          // offset: Offset(0, value.showBackToTop ? 0 : 3),
+          curve: Curves.easeInOut,
           duration: const Duration(milliseconds: 200),
-          child: FloatingActionButton(
-            onPressed: () {
-              context.read<HomeScreenController>().scrollController.animateTo(
-                    0,
-                    duration: const Duration(
-                      milliseconds: 700,
-                    ),
-                    curve: Curves.easeInOut,
-                  );
-            },
-            backgroundColor: ColorConstants.lightNavy2,
-            child: const Icon(
-              Icons.arrow_upward_rounded,
-            ),
-          ).hover,
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: FloatingActionButton(
+              onPressed: () {
+                context.read<HomeScreenController>().scrollController.animateTo(
+                      0,
+                      duration: const Duration(
+                        milliseconds: 700,
+                      ),
+                      curve: Curves.easeInOut,
+                    );
+              },
+              backgroundColor: ColorConstants.lightNavy2,
+              child: const Icon(
+                Icons.arrow_upward_rounded,
+              ),
+            ).hover,
+          ),
         );
       },
     );
