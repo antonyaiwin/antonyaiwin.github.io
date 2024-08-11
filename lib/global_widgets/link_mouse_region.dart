@@ -97,7 +97,10 @@ class LinkMouseRegionController extends ChangeNotifier {
   }
 
   void onMouseExit() {
-    curve = Curves.bounceOut;
+    curve = Sprung.custom(
+      damping: 15,
+      stiffness: 500,
+    );
     duration = const Duration(milliseconds: 1000);
     offset = Offset.zero;
     notifyListeners();
