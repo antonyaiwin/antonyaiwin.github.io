@@ -17,6 +17,7 @@ class ProjectCarouselWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.only(bottom: 30),
       decoration: const BoxDecoration(
         color: ColorConstants.navyShadow,
       ),
