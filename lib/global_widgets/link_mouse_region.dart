@@ -1,33 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_personal_portfolio/controller/animated_cursor_controller.dart';
 import 'package:provider/provider.dart';
+import 'package:sprung/sprung.dart';
 
 class LinkMouseRegion extends StatelessWidget {
+  final Widget child;
+  final bool elastic;
+
   const LinkMouseRegion({
     super.key,
     required this.child,
-  });
-  final Widget child;
+  }) : elastic = false;
+
+  const LinkMouseRegion.elastic({
+    super.key,
+    required this.child,
+  }) : elastic = true;
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (BuildContext context) =>
-          LinkMouseRegionController(context: context, child: child),
-      builder: (context, child) => Consumer<LinkMouseRegionController>(
-        builder: (BuildContext context, LinkMouseRegionController value,
-                Widget? child) =>
-            AnimatedContainer(
-          duration: value.duration,
-          curve: value.curve,
-          transform: Matrix4.translationValues(
-            value.offset.dx,
-            value.offset.dy,
-            0.0,
-          ),
-          transformAlignment: Alignment.center,
-          child: const MyMouseRegion(),
+      create: (BuildContext context) => LinkMouseRegionController(
+          context: context, child: child, elastic: elastic),
+      builder: (context, child) => elastic
+          ? _consumerWrap(const MyMouseRegion())
+          : const MyMouseRegion(),
+    );
+  }
+
+  Widget _consumerWrap(Widget child) {
+    return Consumer<LinkMouseRegionController>(
+      builder:
+          (BuildContext context, LinkMouseRegionController value, Widget? _) =>
+              AnimatedContainer(
+        duration: value.duration,
+        curve: value.curve,
+        transform: Matrix4.translationValues(
+          value.offset.dx,
+          value.offset.dy,
+          0.0,
         ),
+        transformAlignment: Alignment.center,
+        child: child,
       ),
     );
   }
@@ -47,10 +61,12 @@ class MyMouseRegion extends StatelessWidget {
       onExit: (event) {
         provider.onMouseExit();
       },
-      onHover: (event) {
-        provider.calculatePosition(event.localPosition);
-        // log('delta : ${event.delta} localPosition:${event.localPosition}');
-      },
+      onHover: provider.elastic
+          ? (event) {
+              provider.calculatePosition(event.localPosition);
+              // log('delta : ${event.delta} localPosition:${event.localPosition}');
+            }
+          : null,
       opaque: false,
       child: provider.child,
     );
@@ -63,8 +79,13 @@ class LinkMouseRegionController extends ChangeNotifier {
   Duration duration = const Duration(milliseconds: 300);
   final BuildContext context;
   final Widget child;
+  final bool elastic;
 
-  LinkMouseRegionController({required this.context, required this.child});
+  LinkMouseRegionController({
+    required this.context,
+    required this.child,
+    required this.elastic,
+  });
 
   void calculatePosition(Offset inputOffset) {
     final RenderBox renderBox = context.findRenderObject() as RenderBox;
@@ -90,13 +111,20 @@ class LinkMouseRegionController extends ChangeNotifier {
   }
 
   void onMouseEnter() {
+    context.read<AnimatedCursorController>().onLinkHover(true);
+    if (!elastic) {
+      return;
+    }
     curve = Curves.ease;
     duration = const Duration(milliseconds: 300);
     notifyListeners();
-    context.read<AnimatedCursorController>().onLinkHover(true);
   }
 
   void onMouseExit() {
+    context.read<AnimatedCursorController>().onLinkHover(false);
+    if (!elastic) {
+      return;
+    }
     curve = Sprung.custom(
       damping: 15,
       stiffness: 500,
@@ -104,6 +132,5 @@ class LinkMouseRegionController extends ChangeNotifier {
     duration = const Duration(milliseconds: 1000);
     offset = Offset.zero;
     notifyListeners();
-    context.read<AnimatedCursorController>().onLinkHover(false);
   }
 }
