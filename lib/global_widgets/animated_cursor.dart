@@ -102,6 +102,11 @@ class AnimatedCursor extends StatelessWidget {
 
   void _onMouseHover(PointerHoverEvent event, BuildContext context) {
     // log(event.toString());
+    // log(event.kind.name);
+    context.read<AnimatedCursorController>().updatePointerKind(event.kind);
+    if (event.kind != PointerDeviceKind.mouse) {
+      return;
+    }
     context.read<AnimatedCursorController>().updatePosition(event.position);
   }
 

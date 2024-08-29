@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_personal_portfolio/core/constants/color_constants.dart';
@@ -10,6 +11,7 @@ class AnimatedCursorController extends ChangeNotifier {
   final double outerCircleDiameter = 50;
   final double innerCircleDiameter = 7;
   final Color color = ColorConstants.secondaryGreen.withOpacity(0.3);
+  PointerDeviceKind pointerDeviceKind = PointerDeviceKind.mouse;
 
   void updatePosition(Offset offset) {
     this.offset = offset;
@@ -27,6 +29,9 @@ class AnimatedCursorController extends ChangeNotifier {
   }
 
   void onPanUpdate(DragUpdateDetails details) {
+    if (pointerDeviceKind != PointerDeviceKind.mouse) {
+      return;
+    }
     log(details.toString());
     offset += details.delta;
     notifyListeners();
@@ -35,5 +40,12 @@ class AnimatedCursorController extends ChangeNotifier {
   void onLinkHover(bool value) {
     linkHover = value;
     notifyListeners();
+  }
+
+  void updatePointerKind(PointerDeviceKind pointerDeviceKind) {
+    if (this.pointerDeviceKind != pointerDeviceKind) {
+      this.pointerDeviceKind = pointerDeviceKind;
+      notifyListeners();
+    }
   }
 }
