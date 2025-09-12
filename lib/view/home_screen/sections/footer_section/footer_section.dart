@@ -11,7 +11,7 @@ class FooterSection extends StatelessWidget {
       padding: const EdgeInsets.all(20.0).copyWith(bottom: 0),
       child: Center(
         child: Text(
-          'Designed and Developed by Antony Aiwin',
+          'Designed and Developed by Antony Aiwin with Flutter',
           style: GoogleFonts.aladin(
             textStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: ColorConstants.secondaryGreen.withOpacity(

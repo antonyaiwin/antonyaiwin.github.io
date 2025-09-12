@@ -17,7 +17,7 @@ class ProjectCard extends StatelessWidget {
     required this.item,
   });
   final ProjectModel item;
-  final CarouselController carouselController = CarouselController();
+  final CarouselSliderController carouselController = CarouselSliderController();
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -50,9 +50,7 @@ class ProjectCard extends StatelessWidget {
                       enlargeCenterPage: false,
                       viewportFraction: 1,
                       onPageChanged: (index, reason) {
-                        context
-                            .read<_ProjectCarouselController>()
-                            .onIndexChange(index);
+                        context.read<_ProjectCarouselController>().onIndexChange(index);
                       },
                       // autoPlay: true,
                     ),
@@ -82,8 +80,7 @@ class ProjectCard extends StatelessWidget {
                           flex: 4,
                           child: Center(
                             child: Consumer<_ProjectCarouselController>(
-                              builder: (BuildContext context,
-                                      _ProjectCarouselController value,
+                              builder: (BuildContext context, _ProjectCarouselController value,
                                       Widget? child) =>
                                   AnimatedSmoothIndicator(
                                 activeIndex: value.currentIndex,
@@ -175,8 +172,7 @@ class ProjectCard extends StatelessWidget {
                       ).hoverElastic,
                     ),
                   ),
-                if (item.gitLink != null && item.liveLink != null)
-                  const SizedBox(width: 10),
+                if (item.gitLink != null && item.liveLink != null) const SizedBox(width: 10),
                 if (item.liveLink != null)
                   Flexible(
                     child: FittedBox(

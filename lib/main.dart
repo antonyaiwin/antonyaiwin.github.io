@@ -1,15 +1,26 @@
+import 'dart:js_interop';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_personal_portfolio/core/constants/app_theme.dart';
+import 'package:provider/provider.dart';
+
 import 'package:flutter_personal_portfolio/controller/contact_section_controller.dart';
 import 'package:flutter_personal_portfolio/controller/home_screen_controller.dart';
-import 'package:flutter_personal_portfolio/core/constants/color_constants.dart';
 import 'package:flutter_personal_portfolio/global_widgets/animated_cursor.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 import 'view/greetings_screen/greetings_screen.dart';
 
+@JS('hideSplash') // bind directly to JS function defined in index.html
+external void hideSplash();
+
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(const MyApp());
+
+  // Call the JS function defined in index.html
+  // Call the global JS function
+  hideSplash();
 }
 
 class MyApp extends StatelessWidget {
@@ -35,78 +46,7 @@ class MyApp extends StatelessWidget {
           child: MaterialApp(
             title: 'Antony Aiwin - Flutter Developer',
             debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-              scaffoldBackgroundColor: ColorConstants.scaffoldBackgroundColor,
-              colorScheme: ColorScheme.fromSeed(
-                seedColor: Colors.deepPurple,
-                brightness: Brightness.dark,
-              ),
-              textTheme: GoogleFonts.lexendTextTheme().copyWith(
-                bodyLarge: GoogleFonts.lexendTextTheme().bodyLarge?.copyWith(
-                      color: ColorConstants.primaryWhite,
-                    ),
-              ),
-              inputDecorationTheme: InputDecorationTheme(
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide.none),
-                fillColor: ColorConstants.navy,
-                filled: true,
-                hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: ColorConstants.textFieldHintColor,
-                    ),
-                isDense: true,
-              ),
-              elevatedButtonTheme: ElevatedButtonThemeData(
-                style: ButtonStyle(
-                  // side: const WidgetStatePropertyAll(
-                  //   BorderSide(
-                  //     color: ColorConstants.secondaryGreen,
-                  //   ),
-                  // ),
-                  shape: WidgetStatePropertyAll(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  foregroundColor: const WidgetStatePropertyAll(
-                    ColorConstants.primaryWhite,
-                  ),
-                  backgroundColor: const WidgetStatePropertyAll(
-                    ColorConstants.secondaryGreen2,
-                  ),
-                  overlayColor: WidgetStatePropertyAll(
-                    ColorConstants.secondaryGreen.withOpacity(0.15),
-                  ),
-                  textStyle: WidgetStatePropertyAll(
-                    GoogleFonts.lexendTextTheme().bodyLarge?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
-                  ),
-                ),
-              ),
-              outlinedButtonTheme: OutlinedButtonThemeData(
-                style: ButtonStyle(
-                  side: const WidgetStatePropertyAll(
-                    BorderSide(
-                      color: ColorConstants.secondaryGreen,
-                    ),
-                  ),
-                  shape: WidgetStatePropertyAll(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  foregroundColor: const WidgetStatePropertyAll(
-                    ColorConstants.secondaryGreen,
-                  ),
-                  overlayColor: WidgetStatePropertyAll(
-                    ColorConstants.secondaryGreen.withOpacity(0.15),
-                  ),
-                ),
-              ),
-              useMaterial3: true,
-            ),
+            theme: darkTheme,
             home: const GreetingsScreen(),
           ),
         ),
