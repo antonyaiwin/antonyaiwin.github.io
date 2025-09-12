@@ -1,0 +1,10 @@
+# Correct MIME type for WASM
+AddType application/wasm .wasm
+
+# Correct MIME type for Flutter's ES module
+AddType application/javascript .mjs
+
+# (Optional) Cache control for static files
+<FilesMatch "\.(js|wasm|css|png|jpg|jpeg|gif|svg)$">
+  Header set Cache-Control "public, max-age=31536000, immutable"
+</FilesMatch>
